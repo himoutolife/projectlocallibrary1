@@ -6,10 +6,15 @@ function findAuthorById(authors, id) {//THIS FUNCTION WORKS
 
 //------------------------------------//
 
-function findBookById(books, id) {//THIS FUNCTION WORKS
+/*function findBookById(books, id) {//THIS FUNCTION WORKS
   //this is looking for the book by id, same as author and account
   let found =books.find((book)=> book.id === id);
   return found;
+}*/
+
+function findBookById(books, id){//THIS FUNCTION WORKS, USES FILTER
+  let result = books.filter((book) => book.id === id);
+  return result[0];
 }
 
 //--------------------------------------//
@@ -28,6 +33,11 @@ for (let book of books){
 }
 }  return [checkedOut, returned];
 }
+
+
+
+
+
 
 //----------------------------------//
 function getBorrowersForBook(book, accounts) {
