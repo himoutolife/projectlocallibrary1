@@ -1,9 +1,14 @@
-function getTotalBooksCount(books) {//this function works **REWRITE INTO SHORTER CODE, try to use reduce
+/*function getTotalBooksCount(books) {//this function works **REWRITE INTO SHORTER CODE, try to use reduce
   let total = 0;
   for(let i=0; i<books.length; i++){
     total++;
   }return total;
-}
+}*/
+
+function getTotalBooksCount(books){//THIS ONE WORKS, USED REDUCE
+  let accumulator = 0;
+  return books.reduce((acc)=>acc + 1, accumulator);
+  }
 
 //----------------------------------------//
 
@@ -26,6 +31,10 @@ function getBooksBorrowedCount(books) {//THIS FUNCTION WORKS
 }
 
 //----------------------------------------------//
+function sortAndSlice(genres){//helper function
+  return genres.sort((genreA, genreB)=> genreA.count <genreB.count ? 1: -1).slice(0,5);
+}
+
 
 function getMostCommonGenres(books) {//THIS FUNCTION WORKS
   //need to add up the amount of books by genre
@@ -39,11 +48,10 @@ function getMostCommonGenres(books) {//THIS FUNCTION WORKS
       genres.push({ name, count: 1 });//push the name and add a default count of 1
     }
   });
-  let result = genres.sort((genreA, genreB) => genreA.count < genreB.count ? 1 : -1);//result is now our sorted array
-  result = result.slice(0, 5);//make it top 5
+
+  let result = sortAndSlice(genres);
   return result;//show it
 }
-
 
 //-----------------------------------------------------------------//
 
